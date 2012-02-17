@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block extra_head %}
+    <link rel="stylesheet" href="{{ static('openid/openid.css') }}" type="text/css" />
+{% endblock %}
+
+{% block content %}
+    {% if error %}<p class="error"><strong>Error:</strong> {{ error }}</p>{% endif %}
+    <form id="openid_form" method="post">
+        <input type="hidden" name="next" value="{{ next }}">
+        <fieldset>
+            <legend>Sign-in or Create New Account</legend>
+            <div id="openid_choice">
+                <br />
+                <div id="openid_btns"></div>
+            </div>
+            <div id="openid_input_area">
+                <input id="openid" name="openid" type="text" value="http://" />
+                <input id="openid_submit" type="submit" value="Sign-In"/>
+            </div>
+            <noscript>
+                <p>OpenID is service that allows you to log-on to many different websites using a single indentity.
+                Find out <a href="http://openid.net/what/">more about OpenID</a> and <a href="http://openid.net/get/">how to get an OpenID enabled account</a>.</p>
+            </noscript>
+        </fieldset>
+    </form>
+{% endblock %}
+
+{% block extra_js %}
+    <script src="{{ static('openid/openid-jquery.js') }}"></script>
+    <script src="{{ static('openid/openid-en.js') }}"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            openid.init('openid');
+        });
+    </script>
+{% endblock %}

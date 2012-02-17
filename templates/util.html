@@ -1,0 +1,17 @@
+{% macro render_field(field) %}
+    <div class="control-group">
+    {% if field.errors %}
+        {% for error in field.errors %}
+            <div class="alert alert-error">{{ error }}</div>
+        {% endfor %}
+    {% endif %}
+    {{ field.label(class="control-label") }}
+    <div class="controls">
+        {{ field(**kwargs) }}
+    </div>
+    </div>
+{% endmacro %}
+
+{%- macro nav_link(endpoint, label) -%}
+    <li {% if endpoint == request.endpoint %}class="active"{% endif %}><a href="{{ url_for(endpoint) }}">{{ label }}</a></li>
+{%- endmacro -%}

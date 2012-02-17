@@ -1,0 +1,60 @@
+{% from "util.html" import nav_link with context %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Lunch</title>
+        <!--[if lt IE 9]>
+            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+        <link href="{{ static('bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+        <style>
+            body {
+                padding-top: 60px;
+            }
+        </style>
+        <link href="{{ static('bootstrap/css/bootstrap-responsive.min.css') }}" rel="stylesheet">
+        <link rel="shortcut icon" href="{{ static('favicon.ico') }}">
+        {% block extra_head %}{% endblock %}
+    </head>
+    <body>
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="{{ url_for('index') }}">Lunch</a>
+                    <div class="nav-collapse">
+                        <ul class="nav">
+                            {{ nav_link('index', 'Home') }}
+                            {{ nav_link('today', 'Today') }}
+                            {{ nav_link('restaurants', 'Restaurants') }}
+                        </ul>
+                        <p class="navbar-text pull-right">
+	                        {% if g.user %}
+	                            Logged in as <a href="{{ url_for('profile') }}">{{ g.user.name }}</a>
+	                            - <a href="{{ url_for('logout') }}">Logout</a>
+	                        {% else %}
+	                            <a href="{{ url_for('login') }}">Login</a>
+	                        {% endif %}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            {% for message in get_flashed_messages() %}
+                <div class="alert">{{ message }}</div>
+            {% endfor %}
+            {% block content %}{% endblock %}
+        </div>
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+        <script src="{{ static('bootstrap/js/bootstrap.js') }}"></script>
+        {% block extra_js %}{% endblock %}
+    </body>
+</html>

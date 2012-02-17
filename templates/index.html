@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <table class="table table-bordered table-striped">
+        <tr>
+            <th>Date</th>
+            <th>Restaurant</th>
+            <th>Notes</th>
+        </tr>
+        {% for lunch in lunches %}
+            <tr>
+                <td>{{ lunch.date }}</td>
+                <td>{{ lunch.restaurant.name }}</td>
+                <td>{{ lunch.notes }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

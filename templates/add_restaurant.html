@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% from "util.html" import render_field %}
+
+{% block content %}
+    <form class="form-horizontal" id="add_restaurant" method="post" action="{{ url_for('add_restaurant') }}">
+        {{ form.hidden_tag() }}
+        <fieldset>
+	        <legend>Add Restaurant</legend>
+            {{ render_field(form.restaurant_name, class="input-xlarge", autofocus="autofocus") }}
+	        <div class="form-actions">
+	            <button type="submit" class="btn btn-primary">Add Restaurant</button>
+	            <a class="btn" href="{{ url_for('restaurants') }}">Cancel</a>
+	        </div>
+        </fieldset>
+    </form>
+{% endblock %}

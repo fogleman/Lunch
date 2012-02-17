@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <table class="table table-bordered table-striped">
+        <tr>
+            <th>Restaurant</th>
+            <th>Lunches</th>
+        </tr>
+        {% for restaurant in restaurants %}
+            <tr>
+                <td>{{ restaurant.name }}</td>
+                <td>{{ restaurant.count_lunches(g.user) or '' }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    <p><a class="btn" href="{{ url_for('add_restaurant') }}"><i class="icon-plus"></i> Add Restaurant</a></p>
+{% endblock %}
