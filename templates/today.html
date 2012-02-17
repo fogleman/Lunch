@@ -12,7 +12,7 @@
             {{ render_field(form.notes) }}
             <div class="form-actions">
                 <button type="submit" class="btn btn-primary">Save</button>
-                <button type="reset" class="btn">Cancel</button>
+                <a class="btn" href="{{ url_for('index') }}">Cancel</a>
             </div>
         </fieldset>
     </form>
