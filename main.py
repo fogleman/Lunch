@@ -2,9 +2,9 @@ import datetime
 import functools
 import os
 from flask import Flask, render_template, url_for, g, session, request, redirect, flash
-from flaskext.wtf import Form, TextField, HiddenField, SelectField, DateField, validators
-from flaskext.sqlalchemy import SQLAlchemy
-from flaskext.openid import OpenID
+from flask.ext.wtf import Form, TextField, HiddenField, SelectField, DateField, validators
+from flask.ext.sqlalchemy import SQLAlchemy
+from flask.ext.openid import OpenID
 
 # Flask
 app = Flask(__name__)
